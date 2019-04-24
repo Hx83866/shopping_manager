@@ -1,12 +1,13 @@
-#!/usr/bin/env python
-# coding=UTF-8
-'''
-@Descrption: define a class for a GUI
-@Author: Xiang Hu
-@LastEditors: Xiang Hu
-@Date: 2019-04-10 22:30:18
-@LastEditTime: 2019-04-18 10:59:39
-'''
+# Copyright (c) 2019 Xiang Hu
+#
+# -*- coding:utf-8 -*-
+# @Script: application.py
+# @Author: Xiang Hu
+# @Email: huxiangtony@gmail.com
+# @Create At: 2019-04-24 20:02:22
+# @Last Modified By: Xiang Hu
+# @Last Modified At: 2019-04-24 20:02:22
+# @Description: This is description.
 
 import tkinter as tk
 import tkinter.messagebox as msgb

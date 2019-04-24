@@ -1,12 +1,13 @@
-#!/usr/bin/env python
-# coding=UTF-8
-'''
-@Descrption: It is a GUI for managment of data, which are generated during the purchasing oversea.
-@Author: Xiang Hu
-@LastEditors: Xiang Hu
-@Date: 2019-04-10 22:32:43
-@LastEditTime: 2019-04-16 13:46:38
-'''
+# Copyright (c) 2019 Xiang Hu
+#
+# -*- coding:utf-8 -*-
+# @Script: shopping_manager.py
+# @Author: Xiang Hu
+# @Email: huxiangtony@gmail.com
+# @Create At: 2019-04-24 20:02:42
+# @Last Modified By: Xiang Hu
+# @Last Modified At: 2019-04-24 20:02:42
+# @Description: This is description.
 
 from application import Application
 from tkinter import *
