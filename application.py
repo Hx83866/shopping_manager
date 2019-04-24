@@ -52,7 +52,7 @@ class Application(tk.Tk):
         self.quit_button["command"] = self.quit
 
         self.info_label = ttk.Label(self.mainframe)
-        self.info_label["text"] = "Info_01...............................\n\
+        self.info_label["text"] = "Version 0.0.1 Create the main GUI.\n\
         Info_02............................................\n\
         Info_03............................................\n\
         Info_04............................................\n\
