@@ -6,8 +6,8 @@
 # @Email: huxiangtony@gmail.com
 # @Create At: 2019-04-24 20:02:42
 # @Last Modified By: Xiang Hu
-# @Last Modified At: 2019-04-24 20:02:42
-# @Description: This is description.
+# @Last Modified At: 2019-04-29 15:25:18
+# @Description: the object item of GUI.
 
 from application import Application
 from tkinter import *
