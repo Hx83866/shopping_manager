@@ -6,12 +6,12 @@
 # @Email: huxiangtony@gmail.com
 # @Create At: 2019-04-24 20:02:22
 # @Last Modified By: Xiang Hu
-# @Last Modified At: 2019-04-29 15:28:18
+# @Last Modified At: 2019-04-30 16:42:49
 # @Description: a class for an GUI application.
 
 import tkinter as tk
-import tkinter.messagebox as msgb
 from tkinter import ttk
+from create_records import CreateRecords
 
 
 class Application(tk.Tk):
@@ -92,13 +92,10 @@ class Application(tk.Tk):
         self.mainframe.rowconfigure(5, weight=1)
     
     def create(self):
-        """新建数据库，用来保存新用户的数据"""
+        """新建文档或数据库，用来保存新用户的数据"""
 
-        #msgb.showinfo(title='Create', message="Under Construction!\nPlease Wait!"
         #create window for create new records
-        create_win = tk.Toplevel()
-        create_win.title("Create Your New Records")
-        create_win.geometry('600x300+300+300')
+        create_win = CreateRecords()
 
     def search(self):
         """提供搜索数据库的功能"""
