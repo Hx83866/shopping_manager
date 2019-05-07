@@ -6,7 +6,7 @@
 # @Email: huxiangtony@gmail.com
 # @Create At: 2019-04-30 13:40:42
 # @Last Modified By: Xiang Hu
-# @Last Modified At: 2019-04-30 17:25:04
+# @Last Modified At: 2019-05-07 16:54:27
 # @Description: a Subwindow for create and edit the new records.
 
 from tkinter import *
@@ -29,7 +29,6 @@ class CreateRecords(Tk):
         self.add_widgets()
         self.place_widgets()
         self.sub_resize_config()
-        #self.output_excel()
     
     def add_widgets(self):
         """add Widgets into the Subwinodw"""
@@ -70,45 +69,54 @@ class CreateRecords(Tk):
         #Comboboxes
         col_items = ('Serial_Number', 'Client', 'Date', 'Object', 'Unit_Price',\
             'Amount', 'Total_Units_Price', 'Transportation_Cost', 'Total_Cost')
-        item_names_1= StringVar()
-        self.combobox_1 = ttk.Combobox(self.content, textvariable=item_names_1)
+        self.item_names_1= StringVar()
+        self.combobox_1 = ttk.Combobox(self.content, textvariable=\
+            self.item_names_1)
         self.combobox_1["values"] = col_items
-        self.items_order.append(item_names_1.get())
-        item_names_2= StringVar()
-        self.combobox_2 = ttk.Combobox(self.content, textvariable=item_names_2)
+        
+        self.item_names_2= StringVar()
+        self.combobox_2 = ttk.Combobox(self.content, textvariable=\
+            self.item_names_2)
         self.combobox_2["values"] = col_items
-        self.items_order.append(item_names_2.get())
-        item_names_3= StringVar()
-        self.combobox_3 = ttk.Combobox(self.content, textvariable=item_names_3)
+        
+        self.item_names_3= StringVar()
+        self.combobox_3 = ttk.Combobox(self.content, textvariable=\
+            self.item_names_3)
         self.combobox_3["values"] = col_items
-        self.items_order.append(item_names_3.get())
-        item_names_4= StringVar()
-        self.combobox_4 = ttk.Combobox(self.content, textvariable=item_names_4)
+        
+        self.item_names_4= StringVar()
+        self.combobox_4 = ttk.Combobox(self.content, textvariable=\
+            self.item_names_4)
         self.combobox_4["values"] = col_items
-        self.items_order.append(item_names_4.get())
-        item_names_5= StringVar()
-        self.combobox_5 = ttk.Combobox(self.content, textvariable=item_names_5)
+        
+        self.item_names_5= StringVar()
+        self.combobox_5 = ttk.Combobox(self.content, textvariable=\
+            self.item_names_5)
         self.combobox_5["values"] = col_items
-        self.items_order.append(item_names_5.get())
-        item_names_6= StringVar()
-        self.combobox_6 = ttk.Combobox(self.content, textvariable=item_names_6)
+        
+        self.item_names_6= StringVar()
+        self.combobox_6 = ttk.Combobox(self.content, textvariable=\
+            self.item_names_6)
         self.combobox_6["values"] = col_items
-        self.items_order.append(item_names_6.get())
-        item_names_7= StringVar()
-        self.combobox_7 = ttk.Combobox(self.content, textvariable=item_names_7)
+        
+        self.item_names_7= StringVar()
+        self.combobox_7 = ttk.Combobox(self.content, textvariable=\
+            self.item_names_7)
         self.combobox_7["values"] = col_items
-        item_names_8= StringVar()
-        self.combobox_8 = ttk.Combobox(self.content, textvariable=item_names_8)
+        
+        self.item_names_8= StringVar()
+        self.combobox_8 = ttk.Combobox(self.content, textvariable=\
+            self.item_names_8)
         self.combobox_8["values"] = col_items
-        self.items_order.append(item_names_8.get())
-        item_names_9= StringVar()
-        self.combobox_9 = ttk.Combobox(self.content, textvariable=item_names_9)
+        
+        self.item_names_9= StringVar()
+        self.combobox_9 = ttk.Combobox(self.content, textvariable=\
+            self.item_names_9)
         self.combobox_9["values"] = col_items
-        self.items_order.append(item_names_9.get())
 
         #Buttons
         self.preview_button = ttk.Button(self.content, text="Preview",\
-            command=self.output_excel)
+            command=self.store_elections)
         self.save_button = ttk.Button(self.content, text="Save", \
             command=fdl.asksaveasfilename)
         self.quit_button = ttk.Button(self.content, text="Quit", \
@@ -168,8 +176,29 @@ class CreateRecords(Tk):
         self.content.rowconfigure(9, weight=2)
         self.content.rowconfigure(10, weight=0)   #Buttons
     
-    def output_excel(self):
-        """Get the pattern and output as an Excel file"""
+    def store_elections(self):
+        """store the Selections in subwindow"""
 
+        self.items_order.append(self.combobox_1.get())
+        self.items_order.append(self.combobox_2.get())
+        self.items_order.append(self.combobox_3.get())
+        self.items_order.append(self.combobox_4.get())
+        self.items_order.append(self.combobox_5.get())
+        self.items_order.append(self.combobox_6.get())
+        self.items_order.append(self.combobox_7.get())
+        self.items_order.append(self.combobox_8.get())
+        self.items_order.append(self.combobox_9.get())
+
+
+        i =1
         for item in self.items_order:
-            print("\n%s\n" % item)
+            if item == "":
+                print("No Selection in Column No. %d has been recognised!" % i)
+            else:
+                print(item)
+            
+            i += 1
+
+    
+    #def output_excel(self):
+       # """Get the pattern and output as an Excel file"""

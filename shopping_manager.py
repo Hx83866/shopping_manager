@@ -6,7 +6,7 @@
 # @Email: huxiangtony@gmail.com
 # @Create At: 2019-04-24 20:02:42
 # @Last Modified By: Xiang Hu
-# @Last Modified At: 2019-04-30 13:36:21
+# @Last Modified At: 2019-05-07 15:36:43
 # @Description: the object item of GUI.
 
 from application import Application

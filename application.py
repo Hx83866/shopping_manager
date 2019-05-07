@@ -6,7 +6,7 @@
 # @Email: huxiangtony@gmail.com
 # @Create At: 2019-04-24 20:02:22
 # @Last Modified By: Xiang Hu
-# @Last Modified At: 2019-04-30 16:42:49
+# @Last Modified At: 2019-05-07 15:59:22
 # @Description: a class for an GUI application.
 
 import tkinter as tk
@@ -96,6 +96,7 @@ class Application(tk.Tk):
 
         #create window for create new records
         create_win = CreateRecords()
+        create_win.mainloop()
 
     def search(self):
         """提供搜索数据库的功能"""
