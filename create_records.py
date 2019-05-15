@@ -6,16 +6,16 @@
 # @Email: huxiangtony@gmail.com
 # @Create At: 2019-04-30 13:40:42
 # @Last Modified By: Xiang Hu
-# @Last Modified At: 2019-05-07 16:54:27
+# @Last Modified At: 2019-05-15 20:52:35
 # @Description: a Subwindow for create and edit the new records.
 
 from tkinter import *
 from tkinter import filedialog as fdl
 from tkinter import ttk
+from tkinter import messagebox
 
-import xlrd
-import xlsxwriter
-
+from xlwt import Workbook
+from xlrd import open_workbook, xldate_as_tuple
 
 class CreateRecords(Tk):
     """a Subwindow class for create and edit the new records"""
@@ -24,8 +24,9 @@ class CreateRecords(Tk):
         """Initialize the attribute"""
 
         super().__init__()
-        self.title("Create")
         self.items_order = []   # a empty list to store selected columns
+        self.filename = ""
+        self.title("Create")
         self.add_widgets()
         self.place_widgets()
         self.sub_resize_config()
@@ -116,9 +117,9 @@ class CreateRecords(Tk):
 
         #Buttons
         self.preview_button = ttk.Button(self.content, text="Preview",\
-            command=self.store_elections)
+            command=self.preview_selections)
         self.save_button = ttk.Button(self.content, text="Save", \
-            command=fdl.asksaveasfilename)
+            command=self.output_excel)
         self.quit_button = ttk.Button(self.content, text="Quit", \
             command=self.destroy)
     
@@ -177,7 +178,7 @@ class CreateRecords(Tk):
         self.content.rowconfigure(10, weight=0)   #Buttons
     
     def store_elections(self):
-        """store the Selections in subwindow"""
+        """store the Selections collected from subwindow"""
 
         self.items_order.append(self.combobox_1.get())
         self.items_order.append(self.combobox_2.get())
@@ -188,17 +189,39 @@ class CreateRecords(Tk):
         self.items_order.append(self.combobox_7.get())
         self.items_order.append(self.combobox_8.get())
         self.items_order.append(self.combobox_9.get())
+    
+    def preview_selections(self):
+        """preview the selections"""
 
-
-        i =1
+        self.store_elections()
+        
+        preview_header = []
         for item in self.items_order:
             if item == "":
-                print("No Selection in Column No. %d has been recognised!" % i)
+                continue
             else:
-                print(item)
-            
-            i += 1
+                preview_header.append(item)
+        
+        messagebox.showinfo(message=preview_header, title="Preview")
 
+    def output_excel(self):
+        """Get the pattern and output as an Excel file"""
+
+        self.store_elections()
+
+        output_workbook = Workbook()
+        output_sheet = output_workbook.add_sheet("Sheet_1")
+
+        for element_index, element in enumerate(self.items_order):
+                output_sheet.write(0, element_index, element)
+        
+        my_format = [("Microsoft Excel Files","*.xls"), ("All Files", "*.*")]
+        self.filename = fdl.asksaveasfilename(parent=self.content, defaultextension=".xls",\
+             title="Save as", filetypes=my_format)
     
-    #def output_excel(self):
-       # """Get the pattern and output as an Excel file"""
+        try:
+            output_workbook.save(self.filename)
+            messagebox.showinfo(title="Saved",message=\
+                "Congratulations! You have successfully created your own Excel file!")
+        except:
+            messagebox.showerror(title="Error!", message="No Valid Filename!")
