@@ -6,11 +6,12 @@
 # @Email: huxiangtony@gmail.com
 # @Create At: 2019-04-24 20:02:42
 # @Last Modified By: Xiang Hu
-# @Last Modified At: 2019-05-07 15:36:43
+# @Last Modified At: 2019-05-26 23:02:28
 # @Description: the object item of GUI.
 
-from application import Application
 from tkinter import *
+
+from application import Application
 
 #generate a object
 shopping_manager = Application()

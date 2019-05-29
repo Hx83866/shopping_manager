@@ -6,19 +6,18 @@
 # @Email: huxiangtony@gmail.com
 # @Create At: 2019-04-30 13:40:42
 # @Last Modified By: Xiang Hu
-# @Last Modified At: 2019-05-15 20:52:35
+# @Last Modified At: 2019-05-26 23:01:25
 # @Description: a Subwindow for create and edit the new records.
 
 from tkinter import *
 from tkinter import filedialog as fdl
-from tkinter import ttk
-from tkinter import messagebox
+from tkinter import messagebox, ttk
 
-from xlwt import Workbook
 from xlrd import open_workbook, xldate_as_tuple
+from xlwt import Workbook
 
 class CreateRecords(Tk):
-    """a Subwindow class for create and edit the new records"""
+    """a Subwindow class for creating new excel"""
 
     def __init__(self):
         """Initialize the attribute"""
@@ -32,7 +31,7 @@ class CreateRecords(Tk):
         self.sub_resize_config()
     
     def add_widgets(self):
-        """add Widgets into the Subwinodw"""
+        """add Widgets into the Subwindow"""
 
         #content
         self.content = ttk.Frame(self, padding=(2,2,3,3))
@@ -209,7 +208,7 @@ class CreateRecords(Tk):
 
         self.store_elections()
 
-        output_workbook = Workbook()
+        output_workbook = Workbook(encoding='utf-8')
         output_sheet = output_workbook.add_sheet("Sheet_1")
 
         for element_index, element in enumerate(self.items_order):

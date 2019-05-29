@@ -6,12 +6,14 @@
 # @Email: huxiangtony@gmail.com
 # @Create At: 2019-04-24 20:02:22
 # @Last Modified By: Xiang Hu
-# @Last Modified At: 2019-05-07 15:59:22
+# @Last Modified At: 2019-05-28 14:52:38
 # @Description: a class for an GUI application.
 
 import tkinter as tk
 from tkinter import ttk
+
 from create_records import CreateRecords
+from edit_records import FileFindSubwin
 
 
 class Application(tk.Tk):
@@ -33,7 +35,7 @@ class Application(tk.Tk):
 
         #添加组件
         self.frame = ttk.Frame(self.mainframe, borderwidth=2,\
-            width=400, height=300,)
+            width=400, height=300)
         self.search_button = ttk.Button(self.mainframe)
         self.search_button["text"] = "Search"
         self.search_button["command"] = self.search
@@ -57,8 +59,8 @@ class Application(tk.Tk):
             orient=tk.VERTICAL, command=self.info_label.yview)
         self.info_label['yscrollcommand'] = self.scrollbar.set
 
-        for i in range(1, 101):
-            self.info_label.insert('end', "Line %d of 100." % i)
+        #for i in range(1, 101):
+            #self.info_label.insert('end', "Line %d of 100." % i)
         
     def grid_widgets(self):
         """放置组件位置"""
@@ -110,9 +112,7 @@ class Application(tk.Tk):
         """提供修改数据库的功能"""
         
         #msgb.showinfo(title='Edit', message="Under Construction!\nPlease Wait!")
-        edit_win = tk.Toplevel()
-        edit_win.title("Edit Your Records")
-        edit_win.geometry('600x300+500+500')
+        edit_win = FileFindSubwin()
     
     def quit(self):
         """退出GUI系统"""
