@@ -6,7 +6,7 @@
 # @Email: huxiangtony@gmail.com
 # @Create At: 2019-05-27 12:33:46
 # @Last Modified By: Xiang Hu
-# @Last Modified At: 2019-05-29 22:49:31
+# @Last Modified At: 2019-05-30 00:06:37
 # @Description: Create a toplevel class as a subwindow, with which shopping records can be edit.
 
 from tkinter import *
@@ -42,7 +42,9 @@ class AppendRecords(Toplevel):
         try:
             self.check_selected_file()
             #check whether the excel is empty or not
-            if self.input_header[0]:
+            #check whether the header columns more than 9
+            if self.input_header[0] and \
+                len(self.input_header) <= 9:
 
                 #a container to store labels Widgets
                 self.label_container = []
@@ -55,12 +57,19 @@ class AppendRecords(Toplevel):
                 self.add_widgets()
                 self.place_widgets()
                 self.sub_resize_config()
+            
+            #if input columns more than 9
+            elif len(self.input_header) > 9:
 
+                messagebox.showerror(title="Error!",\
+                    message="Sorry, there too many columns in this file!")
+            
+            #if the file has no header    
             else:
                 messagebox.showerror(title="Empty Excel",\
                     message="Unfortunately! The Excel File is empty!")
                 
-        except:
+        except FileNotFoundError:
             messagebox.showerror(title="Error!", message="No Valid Filepath!")
     
     def check_selected_file(self):
